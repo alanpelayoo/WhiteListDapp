@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&display=swap');
 
+
+
 .title{
   font-family: 'Akaya Kanadaka', cursive;
   font-size: 4.2rem;
@@ -17,10 +19,12 @@
   display: flex;
 }
 .image {
-  width: 70%;
-  height: 50%;
-  margin-left: 0%;
+  width: 95%;
+  height: auto;
+  border: 2px;
+  border-color: black;
 }
+
 .footer {
   display: flex;
   padding: 2rem 0;
@@ -45,6 +49,11 @@
   .menub {
     display: none;
   }
+  .title{
+    font-family: 'Akaya Kanadaka', cursive;
+    font-size: 3.5rem;
+  }
+  
 }
 
 

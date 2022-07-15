@@ -1,3 +1,4 @@
+
 import Head from "next/head";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "../styles/Home.module.css";
@@ -6,11 +7,25 @@ import styles from "../styles/Home.module.css";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faWallet
+} from "@fortawesome/free-solid-svg-icons";
+
+import {
+  faDiscord
+} from "@fortawesome/free-brands-svg-icons";
+
 
 import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
 import { useEffect, useRef, useState } from "react";
 import { WHITELIST_CONTRACT_ADDRESS, abi } from "../constants";
+
 export default function Home() {
   // walletConnected keep track of whether the user's wallet is connected or not
   const [walletConnected, setWalletConnected] = useState(false);
@@ -172,7 +187,7 @@ export default function Home() {
     } else {
       return (
         <button onClick={connectWallet} className={styles.button}>
-          Connect your wallet
+          Connect your wallet 
         </button>
       );
     }
@@ -199,8 +214,8 @@ export default function Home() {
   return(
 
     <div>
-      <Navbar bg="white" className="px-5 py-0">
-        <div className="mx-5 d-flex justify-content-between align-items-center  w-100">
+      <Navbar bg="white" className="px-5 py-3">
+        <div className="mx-0 mx-md-5 d-flex justify-content-between align-items-center  w-100">
           <h1 className={styles.title}>W.</h1>
           <div className={styles.menu}>
             <p className="me-4 fs-5">Home</p>
@@ -209,20 +224,29 @@ export default function Home() {
             <p className="me-4 fs-5">Mint</p>
             <p className="me-4 fs-5">Faq</p>
           </div>
-          <Button className={styles.menub} variant="dark rounded-pill px-4 py-2">Discord</Button> 
+          <Button className={styles.menub} variant="dark rounded-pill px-4 py-2 d-md-flex align-items-center">Discord <FontAwesomeIcon icon={faDiscord} className="d-flex   ms-2"/> </Button>
+          <FontAwesomeIcon icon={faBars} className="d-flex d-md-none fs-1"/> 
+    
         </div>
       </Navbar>
-      <div className={styles.main}>
-        <div className="ms-5 ps-5">
-          <h1>Welcome to Crypto Devs!</h1>
-          <h3 className="fw-light">Its an NFT collection for developers in Crypto.</h3>
-          <h3 className="fw-lighter ">0 have already joined the Whitelist</h3>
-          {renderButton()}
-        </div>
-        <div className="">
-          <img className={styles.image} src="./home.gif" />
-        </div>
-      </div>
+      <Container  style={{height: "80vh"}}>
+
+        <Row className="h-100 " xs={1} md={2} lg={2}>
+          
+          <Col className=" d-flex flex-column justify-content-center align-items-center p-0">
+            <img className={styles.image} src="./home.gif" />
+          </Col>
+          <Col className=" d-flex flex-column justify-content-center align-items-center text-center align-items-md-start text-md-start  ps-md-5">
+            <h1 className="mb-2">Welcome to Crypto Devs!</h1>
+            <h3 className="fw-light mb-1">Its an NFT collection for developers in Crypto.</h3>
+            <h3 className="fw-lighter mb-2">0 have already joined the Whitelist</h3>
+            {renderButton()}
+            
+          </Col>
+        </Row>
+        
+      </Container>
+
       <footer className={styles.footer}>
         Made with &#10084; by apcodes.eth
       </footer>
