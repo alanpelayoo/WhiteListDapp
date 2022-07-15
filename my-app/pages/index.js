@@ -228,7 +228,7 @@ export default function Home() {
     
         </div>
       </Navbar>
-      <Container  style={{minHeight: "80vh"}} className="mb-2">
+      <Container  style={{minHeight: "80vh"}} className="mb-4">
 
         <Row className="h-100 " xs={1} md={2} lg={2}>
           
@@ -249,7 +249,15 @@ export default function Home() {
       </Container>
 
       <footer className={styles.footer}>
+        <Container className="text-center">
+          <strong>Important Note:</strong>
+          <br></br>
+        This is only a local test for our future NFT Drop, We are testing the White list fullstack feature in the Rinkeby Network, so this White List will only work on the testing purpose. 
+        <br></br>
         Made with &#10084; by apcodes.eth
+
+        </Container>
+        
       </footer>
     </div>
   )
