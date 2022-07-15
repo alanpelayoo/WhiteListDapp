@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "../styles/Home.module.css";
 
 
+
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
@@ -13,7 +14,6 @@ import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
-  faWallet
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -25,6 +25,7 @@ import Web3Modal from "web3modal";
 import { providers, Contract } from "ethers";
 import { useEffect, useRef, useState } from "react";
 import { WHITELIST_CONTRACT_ADDRESS, abi } from "../constants";
+
 
 export default function Home() {
   // walletConnected keep track of whether the user's wallet is connected or not
@@ -187,7 +188,7 @@ export default function Home() {
     } else {
       return (
         <button onClick={connectWallet} className={styles.button}>
-          Connect your wallet 
+          Connect your wallet
         </button>
       );
     }
@@ -209,8 +210,6 @@ export default function Home() {
       connectWallet();
     }
   }, [walletConnected]);
-
-
   return(
 
     <div>
@@ -218,18 +217,18 @@ export default function Home() {
         <div className="mx-0 mx-md-5 d-flex justify-content-between align-items-center  w-100">
           <h1 className={styles.title}>W.</h1>
           <div className={styles.menu}>
-            <p className="me-4 fs-5">Home</p>
-            <p className="me-4 fs-5">About Us</p>
-            <p className="me-4 fs-5">Whitelist</p>
-            <p className="me-4 fs-5">Mint</p>
-            <p className="me-4 fs-5">Faq</p>
+            <a href="" className={styles.semi}><p className="me-4 fs-5">Home</p></a>
+            <a href="" className={styles.semi}><p className="me-4 fs-5">About Us</p></a>
+            <a href="" className={styles.semi}><p className="me-4 fs-5">Whitelist</p></a>
+            <a href="" className={styles.semi}><p className="me-4 fs-5">Mint</p></a>
+            <a href="" className={styles.semi}><p className="me-4 fs-5">Faq</p></a>
           </div>
           <Button className={styles.menub} variant="dark rounded-pill px-4 py-2 d-md-flex align-items-center">Discord <FontAwesomeIcon icon={faDiscord} className="d-flex   ms-2"/> </Button>
           <FontAwesomeIcon icon={faBars} className="d-flex d-md-none fs-1"/> 
     
         </div>
       </Navbar>
-      <Container  style={{height: "80vh"}}>
+      <Container  style={{minHeight: "80vh"}} className="mb-2">
 
         <Row className="h-100 " xs={1} md={2} lg={2}>
           
@@ -239,9 +238,11 @@ export default function Home() {
           <Col className=" d-flex flex-column justify-content-center align-items-center text-center align-items-md-start text-md-start  ps-md-5">
             <h1 className="mb-2">Welcome to Crypto Devs!</h1>
             <h3 className="fw-light mb-1">Its an NFT collection for developers in Crypto.</h3>
-            <h3 className="fw-lighter mb-2">0 have already joined the Whitelist</h3>
+            <h3 className="fw-lighter mb-2">{numberOfWhitelisted} have already joined the Whitelist</h3>
+
+            <div className="">
             {renderButton()}
-            
+            </div>          
           </Col>
         </Row>
         

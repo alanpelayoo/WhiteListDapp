@@ -18,6 +18,15 @@
 .menu {
   display: flex;
 }
+
+.semi{
+  text-decoration: none;
+  color: black;
+}
+.semi:hover {
+  color: grey;
+}
+
 .image {
   width: 95%;
   height: auto;
