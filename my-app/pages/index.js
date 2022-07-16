@@ -213,8 +213,8 @@ export default function Home() {
   return(
 
     <div>
-      <Navbar bg="white" className="px-5 py-3">
-        <div className="mx-0 mx-md-5 d-flex justify-content-between align-items-center  w-100">
+      <Navbar bg="white" className="px-5 py-0">
+        <div className="mx-0 mx-md-5 d-flex justify-content-between align-items-center  w-100 ">
           <h1 className={styles.title}>W.</h1>
           <div className={styles.menu}>
             <a href="" className={styles.semi}><p className="me-4 fs-5">Home</p></a>
@@ -228,9 +228,9 @@ export default function Home() {
     
         </div>
       </Navbar>
-      <Container  style={{minHeight: "80vh"}} className="mb-4">
+      <Container  style={{minHeight: "80vh"}} className="mb-3">
 
-        <Row className="h-100 " xs={1} md={2} lg={2}>
+        <Row className="h-100" xs={1} md={2} lg={2}>
           
           <Col className=" d-flex flex-column justify-content-center align-items-center p-0">
             <img className={styles.image} src="./home.gif" />

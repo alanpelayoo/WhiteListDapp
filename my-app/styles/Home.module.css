@@ -28,8 +28,8 @@
 }
 
 .image {
-  width: 95%;
-  height: auto;
+  width: auto;
+  height: 82vh;
   border: 2px;
   border-color: black;
 }
@@ -62,7 +62,10 @@
     font-family: 'Akaya Kanadaka', cursive;
     font-size: 3.5rem;
   }
-  
+  .image {
+    width: 90%;
+    height: auto;
+  }
 }
 
 
