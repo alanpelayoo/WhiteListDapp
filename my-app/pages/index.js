@@ -14,6 +14,7 @@ import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
+  faXmark
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -38,6 +39,7 @@ export default function Home() {
   const [numberOfWhitelisted, setNumberOfWhitelisted] = useState(0);
   // Create a reference to the Web3 Modal (used for connecting to Metamask) which persists as long as the page is open
   const web3ModalRef = useRef();
+  const [buttonState,setButton] = useState(false)
 
   /**
    * Returns a Provider or Signer object representing the Ethereum RPC with or without the
@@ -169,6 +171,7 @@ export default function Home() {
     renderButton: Returns a button based on the state of the dapp
   */
   const renderButton = () => {
+    
     if (walletConnected) {
       if (joinedWhitelist) {
         return (
@@ -192,6 +195,25 @@ export default function Home() {
         </button>
       );
     }
+  };
+
+  const renderMenu = () => {
+    if (!buttonState){
+      return (
+        <button onClick={() => setButton(!buttonState)} className="d-md-none" style={{all:"unset"}}>
+              <FontAwesomeIcon icon={faBars} className="d-flex fs-1"/> 
+        </button>
+      );
+    } else if (buttonState){
+      return(
+        <div>
+          <button onClick={() => setButton(!buttonState)} className="d-md-none " style={{all:"unset"}}>
+              <FontAwesomeIcon icon={faXmark} className="d-flex fs-1"/> 
+          </button>
+        </div>
+      );
+    }
+    
   };
 
   // useEffects are used to react to changes in state of the website
@@ -224,41 +246,36 @@ export default function Home() {
             <a href="" className={styles.semi}><p className="me-4 fs-5">Faq</p></a>
           </div>
           <Button className={styles.menub} variant="dark rounded-pill px-4 py-2 d-md-flex align-items-center">Discord <FontAwesomeIcon icon={faDiscord} className="d-flex   ms-2"/> </Button>
-          <FontAwesomeIcon icon={faBars} className="d-flex d-md-none fs-1"/> 
-    
+          {renderMenu()}
         </div>
       </Navbar>
-      <Container  style={{minHeight: "80vh"}} className="mb-3">
 
+      <Container  style={{minHeight: "80vh"}} className="mb-3">
         <Row className="h-100" xs={1} md={2} lg={2}>
-          
           <Col className=" d-flex flex-column justify-content-center align-items-center p-0">
             <img className={styles.image} src="./home.gif" />
           </Col>
           <Col className=" d-flex flex-column justify-content-center align-items-center text-center align-items-md-start text-md-start  ps-md-5">
             <h1 className="mb-2">Welcome to Crypto Devs!</h1>
             <h3 className="fw-light mb-1">Its an NFT collection for developers in Crypto.</h3>
-            <h3 className="fw-lighter mb-2">{numberOfWhitelisted} have already joined the Whitelist</h3>
-
+            <h3 className="fw-lighter mb-2">{numberOfWhitelisted} have already joined the Whitelist 🚀</h3>
             <div className="">
             {renderButton()}
             </div>          
           </Col>
         </Row>
-        
       </Container>
 
       <footer className={styles.footer}>
         <Container className="text-center">
           <strong>Important Note:</strong>
           <br></br>
-        This is only a local test for our future NFT Drop, We are testing the White list fullstack feature in the Rinkeby Network, so this White List will only work on the testing purpose. 
+          This is only a local test for our future NFT Drop, We are testing the White list fullstack feature in the Rinkeby Network, so this White List will only work on the testing purpose. 
         <br></br>
-        Made with &#10084; by apcodes.eth
-
+          Made with &#10084; by apcodes.eth
         </Container>
-        
       </footer>
+      
     </div>
   )
 }
